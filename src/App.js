@@ -83,7 +83,7 @@ function App() {
       <div className={`grid ${winner}`}>
         {
           grid.map((cell, index)=>{
-            return <button key={index} className={`cell ${cell}`} onClick={()=>{play(index)}}>{cell}</button>
+            return <button key={index} className={`cell ${cell}`} onClick={()=>{play(index)}}></button>
           })        
         }
       </div>
