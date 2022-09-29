@@ -43,7 +43,7 @@
   inset: 5px;
 }
 
-.cell:empty{
+.cell.null{
   cursor: pointer;
   pointer-events: all;
 }
