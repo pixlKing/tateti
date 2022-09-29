@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tateti/static/css/main.fca16cec.css",
+    "main.js": "/tateti/static/js/main.983a88e7.js",
+    "static/js/787.bb35654a.chunk.js": "/tateti/static/js/787.bb35654a.chunk.js",
+    "index.html": "/tateti/index.html",
+    "main.fca16cec.css.map": "/tateti/static/css/main.fca16cec.css.map",
+    "main.983a88e7.js.map": "/tateti/static/js/main.983a88e7.js.map",
+    "787.bb35654a.chunk.js.map": "/tateti/static/js/787.bb35654a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fca16cec.css",
+    "static/js/main.983a88e7.js"
+  ]
+}
