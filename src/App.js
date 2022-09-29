@@ -26,8 +26,7 @@ function App() {
     if(grid.slice(3,6).join('')==='OOO'){ setWinner('O'); return true }    
     //third row
     if(grid.slice(6,9).join('')==='XXX'){ setWinner('X'); return true }
-    if(grid.slice(6,9).join('')==='OOO'){ setWinner('O'); return true }
-    
+    if(grid.slice(6,9).join('')==='OOO'){ setWinner('O'); return true }    
   }
 
   const winByCol = ()=>{
@@ -78,7 +77,7 @@ function App() {
   return (
     <div className="App">
       {
-        winner && <div className='winner'>El ganador es: {winner}</div>
+        winner && <div className='winner' onClick={()=>{reset()}}>Ganaron las {winner}!</div>
       }      
       <div className={`grid ${winner}`}>
         {
