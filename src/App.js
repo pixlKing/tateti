@@ -8,51 +8,35 @@ function App() {
   const [winner, setWinner] = useState('')
 
   const win = useEffect(()=>{
-    winConditions()
+    checkWinners()
   }, [grid])
 
-  const winConditions = ()=>{
-    winByRow() 
-    winByCol() 
-    winByDiagonal() 
-  }
+  const checkWinners = ()=>{
+    const conditions = [     
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,3,6],      
+      [1,4,7],      
+      [2,5,8],  
+      [0,4,8],      
+      [2,4,6]
+    ];
 
-  const winByRow = ()=>{
-    //first row
-    if(grid.slice(0,3).join('')==='XXX'){ setWinner('X'); return true }
-    if(grid.slice(0,3).join('')==='OOO'){ setWinner('O'); return true }
-    // second row
-    if(grid.slice(3,6).join('')==='XXX'){ setWinner('X'); return true } 
-    if(grid.slice(3,6).join('')==='OOO'){ setWinner('O'); return true }    
-    //third row
-    if(grid.slice(6,9).join('')==='XXX'){ setWinner('X'); return true }
-    if(grid.slice(6,9).join('')==='OOO'){ setWinner('O'); return true }    
-  }
+    const hasWinner = ()=>{
+      
+      return conditions.some(condition =>{        
+        return condition.every(cell =>{         
+          return grid[cell]===turn;
+        })
+      });
 
-  const winByCol = ()=>{
-    //first col
-    const firstCol = `${grid[0]}${grid[3]}${grid[6]}`
-    if(firstCol==='XXX'){ setWinner('X'); return true}
-    if(firstCol==='OOO'){ setWinner('O'); return true}    
-    //second col
-    const secondCol = `${grid[1]}${grid[4]}${grid[7]}`
-    if(secondCol==='XXX'){ setWinner('X'); return true }
-    if(secondCol==='OOO'){ setWinner('O'); return true }    
-    //third col
-    const thirdCol = `${grid[2]}${grid[5]}${grid[8]}`
-    if(thirdCol==='XXX'){setWinner('X'); return true}
-    if(thirdCol==='OOO'){setWinner('O'); return true}
-  }
+    }
 
-  const winByDiagonal = ()=>{
-    //Diag 1
-    const diag1 = `${grid[0]}${grid[4]}${grid[8]}`
-    if(diag1==='XXX'){ setWinner('X'); return true}
-    if(diag1==='OOO'){ setWinner('O'); return true}    
-    //Diag 2
-    const diag2 = `${grid[2]}${grid[4]}${grid[6]}`
-    if(diag2==='XXX'){ setWinner('X'); return true }
-    if(diag2==='OOO'){ setWinner('O'); return true }
+    if(hasWinner()){
+      setWinner(turn)
+    }
+   
   }
 
   const play = (index)=>{
@@ -60,12 +44,14 @@ function App() {
     newGrid[index] = turn
     setGrid(newGrid)
 
-    if(turn === 'X'){
-      setTurn('O')
-    }
-    else{
-      setTurn('X')      
-    }
+    setTimeout(()=>{//hago esto porque me cambia el turno antes de actualizar la grilla pero despues de checkear ganador
+      if(turn === 'X'){ 
+        setTurn('O')
+      }
+      else{
+        setTurn('X')
+      }
+    }, 50)
   }
 
   const reset = ()=>{
